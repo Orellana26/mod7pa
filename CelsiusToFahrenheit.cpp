@@ -1,7 +1,7 @@
-// filename.cpp
-// your name
-// submission date
-// one line summary of program's purpose, do not exceed 80 columns
+// CelsiusToFahrenheit.cpp
+// Marcelo Orellana
+// November 6, 2026
+// Converts a list of Celsius temperatures to Fahrenheit and prints each pair
 
 #include <iostream>
 #include <vector>
@@ -28,8 +28,11 @@ int main() {
     vector<TemperaturePair> temperaturePairs(celsiusTemperatures.size());
 
     // Use std::transform with a lambda expression to populate temperaturePairs
-	// add your code here
-    // ...
+    transform(celsiusTemperatures.begin(), celsiusTemperatures.end(),
+              temperaturePairs.begin(),
+              [](double celsius) {
+        return TemperaturePair{celsius, celsiusToFahrenheit(celsius)};
+    });
 
     // Output the results using another lambda in a for_each
     for_each(temperaturePairs.begin(), temperaturePairs.end(),
